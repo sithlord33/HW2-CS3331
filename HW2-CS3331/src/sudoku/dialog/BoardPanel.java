@@ -59,6 +59,7 @@ public class BoardPanel extends JPanel {
     /** Set the board to be displayed. */
     public void setBoard(Board board) {
     	this.board = board;
+    	repaint();
     }
     
     /**

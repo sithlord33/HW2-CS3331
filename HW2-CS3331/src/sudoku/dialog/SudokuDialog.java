@@ -95,13 +95,11 @@ public class SudokuDialog extends JFrame {
         //
     	if (!board.isSolved()){
     		int i = JOptionPane.showConfirmDialog(null, "Play a new game?", "New Game", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-    		if (i == JOptionPane.NO_OPTION){
+    		if (i == JOptionPane.YES_OPTION){
     			board = new Board(size);
     			boardPanel.setBoard(board);
     		}
     	}
-    	board = new Board(size);
-		boardPanel.setBoard(board);
         showMessage("New clicked: " + size);
     }
 

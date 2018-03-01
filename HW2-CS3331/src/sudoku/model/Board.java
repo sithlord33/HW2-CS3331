@@ -13,6 +13,7 @@ public class Board {
 
         // WRITE YOUR CODE HERE ...
         this.root = (int)Math.sqrt(size);
+        numA = new int[size][size];
     }
 
     /** Return the size of this board. */
