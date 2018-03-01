@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 
 import sudoku.model.Board;
 
@@ -67,6 +68,7 @@ public class SudokuDialog extends JFrame {
     private void boardClicked(int x, int y) {
         // WRITE YOUR CODE HERE ...
         //
+    	boardPanel.clicked(x,  y);
     	showMessage(String.format("Board clicked: x = %d, y = %d",  x, y));
     }
     
@@ -91,9 +93,15 @@ public class SudokuDialog extends JFrame {
     private void newClicked(int size) {
         // WRITE YOUR CODE HERE ...
         //
+    	if (!board.isSolved()){
+    		int i = JOptionPane.showConfirmDialog(null, "Play a new game?", "New Game", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+    		if (i == JOptionPane.NO_OPTION){
+    			board = new Board(size);
+    			boardPanel.setBoard(board);
+    		}
+    	}
     	board = new Board(size);
-    	boardPanel.setBoard(board);
-    	boardPanel.repaint();
+		boardPanel.setBoard(board);
         showMessage("New clicked: " + size);
     }
 

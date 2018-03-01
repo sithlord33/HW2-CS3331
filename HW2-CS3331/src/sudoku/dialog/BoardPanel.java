@@ -80,7 +80,7 @@ public class BoardPanel extends JPanel {
     /** Draw the associated board. */
     @Override
     public void paint(Graphics g) {
-        //super.paint(g); 
+        super.paint(g); 
 
         // determine the square size
         Dimension dim = getSize();
@@ -105,14 +105,15 @@ public class BoardPanel extends JPanel {
         	g.drawLine(i * squareSize * board.root, 0, i * squareSize * board.root, size);
         	g.drawLine(0, i * squareSize * board.root, size, i * squareSize * board.root);
         }
-        /*g.setColor(Color.RED);
-        g.fillRect(cx, cy, squareSize, squareSize);*/
+        g.setColor(Color.RED);
+        g.fillRect(cx * squareSize, cy * squareSize, squareSize, squareSize);
     }
     
-    /*public void clicked(int cx, int cy){
+    public void clicked(int cx, int cy){
     	this.cx = cx;
     	this.cy = cy;
-    	this.repaint();
-    }*/
+    	repaint();
+    	//paint(this.getGraphics());
+    }
 
 }
