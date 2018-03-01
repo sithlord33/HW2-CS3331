@@ -99,7 +99,7 @@ public class SudokuDialog extends JFrame {
     			board = new Board(size);
     			boardPanel.setBoard(board);
     		}
-    	}
+    	} 
         showMessage("New clicked: " + size);
     }
 
