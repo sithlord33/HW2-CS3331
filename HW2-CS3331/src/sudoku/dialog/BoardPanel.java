@@ -36,7 +36,7 @@ public class BoardPanel extends JPanel {
 	}
 	
     /** Background color of the board. */
-	private static final Color boardColor = new Color(247, 223, 150);
+	private static final Color boardColor = new Color(255, 255, 255);
 
     /** Board to be displayed. */
     private Board board;
@@ -96,7 +96,7 @@ public class BoardPanel extends JPanel {
 
         // WRITE YOUR CODE HERE ...
         // i.e., draw grid and squares.
-        g.setColor(Color.BLUE);
+        g.setColor(Color.GRAY);
         for (int i = 1; i < size / board.size; i++ ){
         	g.drawLine(i * squareSize, 0, i * squareSize, size);
         	g.drawLine(0, i * squareSize, size, i * squareSize);
@@ -104,18 +104,25 @@ public class BoardPanel extends JPanel {
         g.setColor(Color.BLACK);
         g.drawRect(0, 0, size, size);
         for (int i = 1; i < board.size; i++ ){
+        	//g.setStroke(new BasicStroke(3));
         	g.drawLine(i * squareSize * board.root, 0, i * squareSize * board.root, size);
         	g.drawLine(0, i * squareSize * board.root, size, i * squareSize * board.root);
         }
-        g.setColor(new Color(255,255,150));
-        g.fillRect(cx * squareSize, cy * squareSize, squareSize, squareSize);
+        g.setColor(new Color(135, 206, 250));
+        g.fillRect(cx * squareSize + 3, cy * squareSize + 3, squareSize - 5, squareSize - 5);
         
         for (int i = 0; i < board.size; i++){
         	for (int j = 0; j < board.size; j++){
         		if (board.getNum(i, j) != 0){
         			g.setColor(Color.BLACK);
-        			g.setFont(new Font("Arial", Font.PLAIN, 25));
-        			g.drawString(String.valueOf(board.getNum(i, j)), (i * squareSize) + squareSize / 2 - 7, (j * squareSize) + squareSize / 2 + 9);
+        			if (board.size == 4){
+        				g.setFont(new Font("Arial", Font.PLAIN, 48));
+        				g.drawString(String.valueOf(board.getNum(i, j)), (i * squareSize) + squareSize / 2 - 12, (j * squareSize) + squareSize / 2 + 17);
+        			}
+        			else {
+        				g.setFont(new Font("Arial", Font.PLAIN, 15));
+        				g.drawString(String.valueOf(board.getNum(i, j)), (i * squareSize) + squareSize / 2 - 3, (j * squareSize) + squareSize / 2 + 6);
+        			}
         		}
         	}
         }
