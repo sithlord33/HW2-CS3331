@@ -29,33 +29,25 @@ public class Board {
 		numA = new int[9][9];
 	}
 	
-	public boolean isValid(int[] place){
-		int cx, cy, n;
-		cx = place[0];
-		cy = place[1];
-		n = place[2];
-		if (n > size || n < 1)
+	public boolean isValid(int cx, int cy, int n){
+		if (n > size || n < 0)
 			return false;
 		for (int i = 0; i < size; i++)
-			if (n == numA[i][cx - 1])return false;
+			if (n == numA[cx][i])return false;
 		for (int i = 0; i < size; i++)
-			if (n == numA[cy - 1][i])return false;
+			if (n == numA[i][cy])return false;
 	
-		int x = (cx - 1)/root, y = (cy - 1)/root;
-		for (int i = x*root;i<(x+1)*root;i++)
-			for(int j = y*root;j<(y+1)*root;j++)
+		int x = cx / root, y = cy / root;
+		for (int i = x * root; i < (x + 1) * root; i++)
+			for(int j = y * root; j < (y + 1) * root; j++)
 				if(n == numA[i][j])
 					return false;
 		return true;
 	}
 	
-	public void placeNum(int[] place){
-			if (isValid(place)){
-				int x = place[0];
-				int y = place[1];
-				int num = place[2];
-				numA[x - 1][y- 1] = num;
-			}
+	public void placeNum(int x, int y, int n){
+		if (isValid(x, y, n))
+			numA[x][y] = n;
 	}
 
 	public boolean isSolved() {
@@ -65,5 +57,12 @@ public class Board {
 			}
 		return true;
 	}
-
+	
+	public int getNum(int x, int y){
+		return numA[x][y];
+	}
+	
+	public void deleteNum(int x, int y){
+		numA[x][y] = 0;
+	}
 }

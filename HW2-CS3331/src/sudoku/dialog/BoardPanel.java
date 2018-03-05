@@ -1,6 +1,7 @@
 package sudoku.dialog;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
@@ -106,8 +107,18 @@ public class BoardPanel extends JPanel {
         	g.drawLine(i * squareSize * board.root, 0, i * squareSize * board.root, size);
         	g.drawLine(0, i * squareSize * board.root, size, i * squareSize * board.root);
         }
-        g.setColor(Color.RED);
+        g.setColor(new Color(255,255,150));
         g.fillRect(cx * squareSize, cy * squareSize, squareSize, squareSize);
+        
+        for (int i = 0; i < board.size; i++){
+        	for (int j = 0; j < board.size; j++){
+        		if (board.getNum(i, j) != 0){
+        			g.setColor(Color.BLACK);
+        			g.setFont(new Font("Arial", Font.PLAIN, 25));
+        			g.drawString(String.valueOf(board.getNum(i, j)), (i * squareSize) + squareSize / 2 - 7, (j * squareSize) + squareSize / 2 + 9);
+        		}
+        	}
+        }
     }
     
     public void clicked(int cx, int cy){
@@ -116,5 +127,13 @@ public class BoardPanel extends JPanel {
     	repaint();
     	//paint(this.getGraphics());
     }
-
+    
+    /* Delete number if X is clicked. Place number otherwise and if it's valid */
+    public void insert(int num){
+    	if (num == 0)
+    		board.deleteNum(cx, cy);
+    	else
+    		board.placeNum(cx, cy, num);
+    	repaint();
+    }
 }

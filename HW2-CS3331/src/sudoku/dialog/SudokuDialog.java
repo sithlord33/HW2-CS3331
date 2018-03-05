@@ -79,8 +79,15 @@ public class SudokuDialog extends JFrame {
     private void numberClicked(int number) {
         // WRITE YOUR CODE HERE ...
         //
-    	
+    	boardPanel.insert(number);
         showMessage("Number clicked: " + number);
+        if (board.isSolved()){
+        	int i = JOptionPane.showConfirmDialog(null, "Congratulations, You won! Play a new game?", "New Game", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+    		if (i == JOptionPane.YES_OPTION){
+    			board = new Board();
+    			boardPanel.setBoard(board);
+    		}
+        }
     }
     
     /**
