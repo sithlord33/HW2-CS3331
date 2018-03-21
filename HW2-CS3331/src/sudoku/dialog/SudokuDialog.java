@@ -41,6 +41,8 @@ public class SudokuDialog extends JFrame {
 
     /** Message bar to display various messages. */
     private JLabel msgBar = new JLabel("");
+    
+    /** Audio file */
 
     /** Create a new dialog. */
     public SudokuDialog() {
@@ -82,6 +84,8 @@ public class SudokuDialog extends JFrame {
     	boardPanel.insert(number);
         showMessage("Number clicked: " + number);
         if (board.isSolved()){
+        	//win.setMicrosecondPosition(0);
+        	//win.start();
         	int i = JOptionPane.showConfirmDialog(null, "Congratulations, You won! Play a new game?", "New Game", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
     		if (i == JOptionPane.YES_OPTION){
     			board = new Board();
@@ -136,6 +140,11 @@ public class SudokuDialog extends JFrame {
         
         msgBar.setBorder(BorderFactory.createEmptyBorder(10,16,10,0));
         add(msgBar, BorderLayout.SOUTH);
+        
+        /*try{
+        	 win = AudioSystem.getClip();
+        	 win.open(AudioSystem.getAudioInputStream(getClass().getResource("/res/audio.wav")));
+        }*/
     }
       
     /** Create a control panel consisting of new and number buttons. */

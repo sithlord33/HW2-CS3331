@@ -109,7 +109,7 @@ public class BoardPanel extends JPanel {
         	g.drawLine(0, i * squareSize * board.root, size, i * squareSize * board.root);
         }
         g.setColor(new Color(135, 206, 250));
-        g.fillRect(cx * squareSize + 3, cy * squareSize + 3, squareSize - 5, squareSize - 5);
+        g.fillRect(cx * squareSize + 2, cy * squareSize + 2, squareSize - 3, squareSize - 3);
         
         for (int i = 0; i < board.size; i++){
         	for (int j = 0; j < board.size; j++){

@@ -65,4 +65,8 @@ public class Board {
 	public void deleteNum(int x, int y){
 		numA[x][y] = 0;
 	}
+	
+	public void boardTest(){
+		
+	}
 }
