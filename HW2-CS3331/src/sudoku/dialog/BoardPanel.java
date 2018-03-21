@@ -35,8 +35,8 @@ public class BoardPanel extends JPanel {
 		void clicked(int x, int y);
 	}
 	
-    /** Background color of the board. */
-	private static final Color boardColor = new Color(255, 255, 255);
+    /** Background color of the board. **/
+	private static final Color boardColor = Color.WHITE;
 
     /** Board to be displayed. */
     private Board board;
